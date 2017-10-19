@@ -35,7 +35,7 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6"
     ],
-    keywords=['translate','translate_api'],
+    keywords=['requests','crawl_requests'],
     install_requires=[
         'requests>=2.9.1'
     ],
