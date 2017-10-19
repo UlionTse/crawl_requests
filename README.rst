@@ -3,7 +3,7 @@
 *1. Feactures:*
 ---------------
 - *crawl_requests provides api of User-Agent_pool and proxy_pool.*
-- *first, common requests; secondly, add user-agent requests; finally, add user-agent and proxy requests.*
+- *firstly, common requests; secondly, add user-agent requests; finally, add user-agent and proxy requests.*
 
 *2. Usage:*
 -----------
