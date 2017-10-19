@@ -1,4 +1,4 @@
-**translate_api**
+**crawl_requests**
 =================
 *1. Feactures:*
 ---------------
@@ -18,4 +18,3 @@
 ----------
 - *pip install crawl_requests*
 - *Example: proxy_pool=[{'http': '62.81.245.12:3128'},{'https': '210.38.1.147:8080'}]*
-
