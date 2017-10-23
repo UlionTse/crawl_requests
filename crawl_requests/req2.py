@@ -90,7 +90,9 @@ class Req2:
         else:
             ss.headers.update({'User-Agent': random.choice(self.default_UA)})
         if PROXY_list:
-            ss.proxies.update(random.choice(PROXY_list))
+            global choose_proxy
+            choose_proxy = random.choice(PROXY_list)
+            ss.proxies.update(random.choice(choose_proxy))
         else:
             global choice_proxy
             choice_proxy = random.choice(self.default_PROXY)
@@ -104,9 +106,41 @@ class Req2:
                 res = ss.post(url,**kwargs)
                 return res
         except:
-            self.default_PROXY.remove(choice_proxy)
-            if not self.default_PROXY:
-                print('default_PROXY is None!')
-            #self.all_req(self, method, url, UA_list=UA_list, PROXY_list=PROXY_list, **kwargs)
+            if PROXY_list:
+                PROXY_list.remove(choose_proxy)
+            else:
+                self.default_PROXY.remove(choice_proxy)
+                if not self.default_PROXY:
+                    print('default_PROXY is None!')
+                #self.all_req(self, method, url, UA_list=UA_list, PROXY_list=PROXY_list, **kwargs)
         finally:
             ss.close()
+
+
+    def keep_req(self,method,url,**kwargs):
+        '''
+
+        :param method: str, 'get' or 'post'.
+        :param url: str, eg: 'https://www.python.org'.
+        :param kwargs: like '**kwargs' of `requests`.
+        :return: <Response>
+        '''
+
+        ss = requests.Session()
+        for pxy in self.default_PROXY:
+            ss.headers.update({'User-Agent': random.choice(self.default_UA)})
+            ss.proxies.update(pxy)
+            try:
+                if method == 'get':
+                    r = ss.get(url, timeout=5, **kwargs)
+                    if r.status_code == requests.codes.ok:
+                        return r
+                if method == 'post':
+                    r = ss.post(url, timeout=5, **kwargs)
+                    if r.status_code == requests.codes.ok:
+                        return r
+            except:
+                pass
+            finally:
+                ss.close()
+#END
