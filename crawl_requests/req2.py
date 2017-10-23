@@ -22,7 +22,6 @@ class Req2:
         #                          {'https': '121.43.178.58:3128'}]
         
     def ua_req(self,method,url,UA_list=None,**kwargs):
-        
         '''
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
@@ -48,7 +47,6 @@ class Req2:
             
 
     def proxy_req(self,method,url,PROXY_list=None,**kwargs):
-        
         '''
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
@@ -74,7 +72,6 @@ class Req2:
             
             
     def all_req(self,method,url,UA_list=None,PROXY_list=None,**kwargs):
-        
         '''
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
@@ -112,14 +109,12 @@ class Req2:
                 self.default_PROXY.remove(choice_proxy)
                 if not self.default_PROXY:
                     print('default_PROXY is None!')
-                #self.all_req(self, method, url, UA_list=UA_list, PROXY_list=PROXY_list, **kwargs)
         finally:
             ss.close()
 
 
     def keep_req(self,method,url,**kwargs):
         '''
-
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
         :param kwargs: like '**kwargs' of `requests`.
@@ -143,4 +138,3 @@ class Req2:
                 pass
             finally:
                 ss.close()
-#END
