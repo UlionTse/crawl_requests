@@ -21,6 +21,6 @@
 
 *3. Tips:*
 ----------
-- *pip install crawl_requests*
-- *req2 updates ua and proxy automatically.*
-- *rq2 need about 10 minutes to load and test proxy to be used.*
+- *pip install **crawl_requests***
+- ***req2** updates ua and proxy automatically.*
+- ***rq2** need about 10 minutes to load and test proxy to be used.*
