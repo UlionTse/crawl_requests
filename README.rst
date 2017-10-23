@@ -2,20 +2,15 @@
 ==================
 *1. Feactures:*
 ---------------
-- *crawl_requests provides api of User-Agent_pool and proxy_pool.*
-- *firstly, common requests; secondly, add user-agent requests; finally, add user-agent and proxy requests.*
+- *crawl_requests(like requests) can update ua and proxy automatically.*
 
 *2. Usage:*
 -----------
->>>from crawl_requests import req,req2
-
->>>req.req_get(url='https://www.python.org',headers={},UA_pool=[],proxy_pool=[])
-
-<Response [200]>
+>>>from crawl_requests import req2
 
 >>>rq2 = req2.Req2()
 
->>>rq2.all_req(method='get',url='https://www.python.org')
+>>>rq2.keep_req(method='get',url='https://www.python.org')
 
 <Response [200]>
 
