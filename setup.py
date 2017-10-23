@@ -37,7 +37,8 @@ setup(
     ],
     keywords=['requests','crawl_requests'],
     install_requires=[
-        'requests>=2.9.1'
+        'requests>=2.9.1',
+        'beautifulsoup4>=4.6.0'
     ],
     zip_safe=False,
 )
