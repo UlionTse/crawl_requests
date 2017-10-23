@@ -6,7 +6,7 @@ from setuptools import find_packages
 
 PACKAGE = "crawl_requests"
 NAME = "crawl_requests"
-DESCRIPTION = "crawl_requests provides api of User-Agent_pool and proxy_pool."
+DESCRIPTION = "crawl_requests(like requests) can update ua and proxy automatically."
 AUTHOR = "UlionTse"
 AUTHOR_EMAIL = "shinalone@outlook.com"
 URL = "https://github.com/shinalone/crawl_requests"
