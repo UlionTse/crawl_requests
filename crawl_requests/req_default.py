@@ -13,7 +13,7 @@ class Req():
         self.default_UA = PC_UA_POOL
         self.gen_proxy_pool = gen.gen_pool(self.page_size)
         self.default_PROXY = gen.test_pool(self.gen_proxy_pool)
-        self.default_PROXY.append({})
+        self.default_PROXY.insert(0,{})
 
         # Example:
         # self.default_PROXY =    [{'http': '211.103.208.244:80'},
