@@ -6,16 +6,16 @@
 
 *2. Usage:*
 -----------
->>>from crawl_requests import req2
+>>>from crawl_requests import req_default
 
->>>rq2 = req2.Req2()
+>>>req = req_default.Req(size=1)
 
->>>rq2.keep_req(method='get',url='https://www.python.org')
+>>>req.keep_req(method='get',url='https://www.python.org')
 
 <Response [200]>
 
 *3. Tips:*
 ----------
 - *pip install crawl_requests*
-- *req2 updates ua and proxy automatically.*
-- *rq2 need about 10 minutes to load and test proxy to be used.*
+- *req_default updates ua and proxy automatically.*
+- *req need [about size] minutes to load and test proxy to be used.*
