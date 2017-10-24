@@ -24,7 +24,11 @@ class Req():
         #                          {'https': '120.27.131.204:3128'},
         #                          {'https': '124.232.148.7:3128'},
         #                          {'https': '121.43.178.58:3128'}]
-        
+
+    def _default_proxy(self):
+        return self.default_PROXY
+
+
     def ua_req(self,method,url,UA_list=None,**kwargs):
         
         '''
@@ -120,6 +124,40 @@ class Req():
                     print('default_PROXY is None!')
         finally:
             ss.close()
+        return
+
+
+    def _keep_req(self,method,url,**kwargs):
+
+        '''
+        _test
+        :param method: str, 'get' or 'post'.
+        :param url: str, eg: 'https://www.python.org'.
+        :param kwargs: like '**kwargs' of `requests`.
+        :return: <Response>
+        '''
+
+        ss = requests.Session()
+        real_PROXY = self.default_PROXY
+        if {} in real_PROXY:
+            real_PROXY.remove({})
+
+        for pxy in real_PROXY:
+            ss.headers.update({'User-Agent': random.choice(self.default_UA)})
+            ss.proxies.update(pxy)
+            try:
+                if method == 'get':
+                    r = ss.get(url, timeout=5, **kwargs)
+                    if r.status_code == requests.codes.ok:
+                        return r
+                if method == 'post':
+                    r = ss.post(url, timeout=5, **kwargs)
+                    if r.status_code == requests.codes.ok:
+                        return r
+            except:
+                pass
+            finally:
+                ss.close()
         return
 
 
