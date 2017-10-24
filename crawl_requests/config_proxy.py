@@ -6,7 +6,6 @@ import random
 import math
 import requests
 from bs4 import BeautifulSoup
-from pprint import pprint as ppt
 
 
 class Gen_proxy:
@@ -22,15 +21,15 @@ class Gen_proxy:
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Upgrade-Insecure-Requests': '1',
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
-            'Referer': 'http://www.xicidaili.com/nt/2',  # TODO
+            'Referer': 'http://www.xicidaili.com/nt/2',
             'Accept-Encoding': 'gzip, deflate, sdch',
             'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
             'Cookie': (
             '_free_proxy_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTRiZTUyMzBmNTg5OTM2YmJkMjUwNzI0YzA3MmZmYzhhBjsAVEkiEF9jc3JmX3Rva2VuBjs'
             'ARkkiMW41d1hVT2lRbmx6SG05QWZzTGhsQnJMKzY0S0swNE5zcURzWERORi9QSG89BjsARg%3D%3D--75202b4ab0931f7023c611e51d6b3726333b1c83; '
             'Hm_lvt_0cf76c77469e965d2957f0553e6ecf59={0}; Hm_lpvt_0cf76c77469e965d2957f0553e6ecf59={1}'.format(
-                int(time.time()), int(time.time()))),  # TODO
-            'If-None-Match': 'W/"6d13de41dfc71909f4b7f53fb9ad09ea"'  # TODO
+                int(time.time()), int(time.time()))),
+            'If-None-Match': 'W/"6d13de41dfc71909f4b7f53fb9ad09ea"'
         }
     
     
@@ -86,6 +85,7 @@ class Gen_proxy:
     
     
     def gen_pool(self, number):
+        print('\n--------------------- PLEASE WAIT ---------------------\n')
         proxy_pool = []
         for cat in self.category:
             for num in range(1, number):
@@ -99,12 +99,14 @@ class Gen_proxy:
                     proxy_pool += self.save_pool(dt)
             #print(cat, '----', len(proxy_pool))
             print('Downloading proxies [{0}/4]'.format(1+self.category.index(cat)))
+        print('Prepare [{}] proxies.'.format(len(proxy_pool)))
         self.ss.close()
         return proxy_pool
 
 
     def test_pool(self,pool):
-        print('Begin to test whether `proxy_pool` can be used, you will wait about [{} minutes].'.format(math.trunc(1+(len(pool)*5)/60)))
+        print('\nBegin to test whether `proxy_pool` can be used, you will wait about [{} minutes].\n'.format(
+            math.trunc(1+(len(pool)*5)/60)))
         url_pool = ['https://hao.360.cn/',
                     'https://www.baidu.com/',
                     'https://www.taobao.com/',
@@ -131,11 +133,12 @@ class Gen_proxy:
             finally:
                 sss.close()
             N += 1
-            print('Tested [{0}%], --------------[{1} minutes] later will be completed.'.format(math.trunc((N/len(pool))*100),
+            print('Tested [{0}%] -------- Wait [{1} minutes]'.format(math.trunc((N/len(pool))*100),
                   math.trunc(1+(len(pool)*5-(time.time()-start))/60)))
-        print('final_proxy_pool[{0}] loads.'.format(len(final_proxy_pool)))
-        ppt('Final_proxy_pool: '.format(final_proxy_pool))
-        print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(time.time()-start))
+        print('\n[{0}] proxies will be loaded.'.format(len(final_proxy_pool)))
+        #print('\nFinal_proxy_pool: {}'.format(final_proxy_pool))
+        #print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(math.trunc(time.time()-start)))
+        print('\n--------------------------------YOU CAN BEGIN TO USE PROXY-----------------------------\n')
         return final_proxy_pool
 
 
