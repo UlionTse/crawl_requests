@@ -1,19 +1,21 @@
 #coding:utf-8
 #Author: UlionTse
-
+#Plese respect any website you crawl.
 
 import random
 import requests
 from .config_UA import *
 from .config_proxy import gen
 
-class Req(size=1):
-    def __init__(self,size):
+class Req():
+    def __init__(self):
+        self.page_size = 2
         self.default_UA = PC_UA_POOL
-        self.gen_proxy_pool = gen.gen_pool(int(1+size))
-        self.final_PROXY = gen.test_pool(self.gen_proxy_pool)
-        self.default_PROXY = self.final_PROXY.append({})
+        self.gen_proxy_pool = gen.gen_pool(self.page_size)
+        self.default_PROXY = gen.test_pool(self.gen_proxy_pool)
+        self.default_PROXY.append({})
 
+        # Example:
         # self.default_PROXY =    [{'http': '211.103.208.244:80'},
         #                          {'https': '124.232.148.7:3128'},
         #                          {'https': '118.31.103.7:3128'},
