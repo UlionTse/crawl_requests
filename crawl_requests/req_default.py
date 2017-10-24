@@ -1,17 +1,18 @@
 #coding:utf-8
 #Author: UlionTse
 
+
 import random
 import requests
 from .config_UA import *
 from .config_proxy import gen
 
-class Req2:
-    def __init__(self):
+class Req(size=1):
+    def __init__(self,size):
         self.default_UA = PC_UA_POOL
-        self.gen_proxy_pool = gen.gen_pool(2)
-        self.default_PROXY = gen.test_pool(self.gen_proxy_pool)
-        self.default_PROXY.append({})
+        self.gen_proxy_pool = gen.gen_pool(int(1+size))
+        self.final_PROXY = gen.test_pool(self.gen_proxy_pool)
+        self.default_PROXY = self.final_PROXY.append({})
 
         # self.default_PROXY =    [{'http': '211.103.208.244:80'},
         #                          {'https': '124.232.148.7:3128'},
@@ -76,7 +77,7 @@ class Req2:
         return
             
             
-    def all_req(self,method,url,UA_list=None,PROXY_list=None,**kwargs):
+    def _all_req(self,method,url,UA_list=None,PROXY_list=None,**kwargs):
         
         '''
         :param method: str, 'get' or 'post'.
@@ -121,8 +122,8 @@ class Req2:
 
 
     def keep_req(self,method,url,**kwargs):
+        
         '''
-
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
         :param kwargs: like '**kwargs' of `requests`.
