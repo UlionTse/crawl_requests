@@ -8,7 +8,7 @@
 -----------
 >>>from crawl_requests import req_default
 
->>>req = req_default.Req(size=1)
+>>>req = req_default.Req()
 
 >>>req.keep_req(method='get',url='https://www.python.org')
 
@@ -18,4 +18,4 @@
 ----------
 - *pip install crawl_requests*
 - *req_default updates ua and proxy automatically.*
-- *req need [about size] minutes to load and test proxy to be used.*
+- *req need about [account of loading proxies]% minutes to load and test proxy to be used.*
