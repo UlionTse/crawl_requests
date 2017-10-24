@@ -95,9 +95,10 @@ class Gen_proxy:
                 data = self.get_data(soup)
                 
                 for dt in data:
-                    print(dt)
+                    #print(dt)
                     proxy_pool += self.save_pool(dt)
-            print(cat, '----', len(proxy_pool))
+            #print(cat, '----', len(proxy_pool))
+            print('Downloading proxies [{0}/4]'.format(1+self.category.index(cat)))
         self.ss.close()
         return proxy_pool
 
@@ -124,7 +125,7 @@ class Gen_proxy:
                 r = sss.get(url, timeout=5)
                 if r.status_code == requests.codes.ok:
                     final_proxy_pool.append(pxy)
-                    print('Success num[{0}], [{1}].'.format(len(final_proxy_pool),pxy))
+                    #print('Success num[{0}], [{1}].'.format(len(final_proxy_pool),pxy))
             except:
                 pass
             finally:
@@ -133,8 +134,8 @@ class Gen_proxy:
             print('Tested [{0}%], --------------[{1} minutes] later will be completed.'.format(math.trunc((N/len(pool))*100),
                   math.trunc(1+(len(pool)*5-(time.time()-start))/60)))
         print('final_proxy_pool[{0}] loads.'.format(len(final_proxy_pool)))
-        ppt(final_proxy_pool)
-        print('--------------------------test_time:{} seconds. Instantiation end.-------------------------'.format(time.time()-start))
+        ppt('Final_proxy_pool: '.format(final_proxy_pool))
+        print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(time.time()-start))
         return final_proxy_pool
 
 
