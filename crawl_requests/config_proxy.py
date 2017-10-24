@@ -106,7 +106,7 @@ class Gen_proxy:
 
     def test_pool(self,pool):
         print('\nBegin to test whether `proxy_pool` can be used, you will wait about [{} minutes].\n'.format(
-            math.trunc(1+(len(pool)*5)/60)))
+            math.trunc((len(pool)*5)/60)))
         url_pool = ['https://hao.360.cn/',
                     'https://www.baidu.com/',
                     'https://www.taobao.com/',
@@ -134,7 +134,7 @@ class Gen_proxy:
                 sss.close()
             N += 1
             print('Tested [{0}%] -------- Wait [{1} minutes]'.format(math.trunc((N/len(pool))*100),
-                  math.trunc(1+(len(pool)*5-(time.time()-start))/60)))
+                  math.trunc(-1+(len(pool)*5-(time.time()-start))/60)))
         print('\n[{0}] proxies will be loaded.'.format(len(final_proxy_pool)))
         #print('\nFinal_proxy_pool: {}'.format(final_proxy_pool))
         #print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(math.trunc(time.time()-start)))
