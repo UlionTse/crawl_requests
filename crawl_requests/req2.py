@@ -11,6 +11,7 @@ class Req2:
         self.default_UA = PC_UA_POOL
         self.gen_proxy_pool = gen.gen_pool(2)
         self.default_PROXY = gen.test_pool(self.gen_proxy_pool)
+        self.default_PROXY.append({})
 
         # self.default_PROXY =    [{'http': '211.103.208.244:80'},
         #                          {'https': '124.232.148.7:3128'},
@@ -114,7 +115,6 @@ class Req2:
                 self.default_PROXY.remove(choice_proxy)
                 if not self.default_PROXY:
                     print('default_PROXY is None!')
-                #self.all_req(self, method, url, UA_list=UA_list, PROXY_list=PROXY_list, **kwargs)
         finally:
             ss.close()
         return
