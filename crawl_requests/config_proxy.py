@@ -138,7 +138,7 @@ class Gen_proxy:
         print('\n[{0}] proxies will be loaded.'.format(len(final_proxy_pool)))
         #print('\nFinal_proxy_pool: {}'.format(final_proxy_pool))
         #print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(math.trunc(time.time()-start)))
-        print('\n--------------------------------YOU CAN BEGIN TO USE PROXY-----------------------------\n')
+        print('\n-------------------------------- YOU CAN BEGIN TO USE PROXY --------------------------------\n')
         return final_proxy_pool
 
 
