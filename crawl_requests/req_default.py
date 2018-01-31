@@ -8,8 +8,8 @@ from .config_UA import *
 from .config_proxy import gen
 
 class Req():
-    def __init__(self):
-        self.page_size = 2
+    def __init__(self,page=1):
+        self.page_size = page + 1
         self.default_UA = PC_UA_POOL
         self.gen_proxy_pool = gen.gen_pool(self.page_size)
         self.default_PROXY = gen.test_pool(self.gen_proxy_pool)
@@ -36,7 +36,7 @@ class Req():
         :param url: str, eg: 'https://www.python.org'.
         :param UA_list: list or None. Default_use: self.default_UA.
         :param kwargs: like '**kwargs' of `requests`.
-        :return: <Response>
+        :return: <Response> or None.
         '''
         
         ss = requests.Session()
@@ -63,7 +63,7 @@ class Req():
         :param url: str, eg: 'https://www.python.org'.
         :param PROXY_list: list or None. Default_use: self.default_PROXY.
         :param kwargs: like '**kwargs' of `requests`.
-        :return: <Response>
+        :return: <Response> or None.
         '''
         
         ss = requests.Session()
@@ -91,7 +91,7 @@ class Req():
         :param UA_list: list or None. Default_use: self.default_UA.
         :param PROXY_list: list or None. Default_use: self.default_PROXY.
         :param kwargs: like '**kwargs' of `requests`.
-        :return: <Response>
+        :return: <Response> or None.
         '''
         
         ss = requests.Session()
@@ -127,14 +127,14 @@ class Req():
         return
 
 
-    def _keep_req(self,method,url,**kwargs):
+    def _keep_req(self,method,url,timeout=60,**kwargs):
 
         '''
         _test
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
         :param kwargs: like '**kwargs' of `requests`.
-        :return: <Response>
+        :return: <Response> or None.
         '''
 
         ss = requests.Session()
@@ -147,11 +147,11 @@ class Req():
             ss.proxies.update(pxy)
             try:
                 if method == 'get':
-                    r = ss.get(url, timeout=5, **kwargs)
+                    r = ss.get(url, timeout=timeout, **kwargs)
                     if r.status_code == requests.codes.ok:
                         return r
                 if method == 'post':
-                    r = ss.post(url, timeout=5, **kwargs)
+                    r = ss.post(url, timeout=timeout, **kwargs)
                     if r.status_code == requests.codes.ok:
                         return r
             except:
@@ -161,13 +161,13 @@ class Req():
         return
 
 
-    def keep_req(self,method,url,**kwargs):
+    def keep_req(self,method,url,timeout=60,**kwargs):
         
         '''
         :param method: str, 'get' or 'post'.
         :param url: str, eg: 'https://www.python.org'.
         :param kwargs: like '**kwargs' of `requests`.
-        :return: <Response>
+        :return: <Response> or None.
         '''
 
         ss = requests.Session()
@@ -176,15 +176,15 @@ class Req():
             ss.proxies.update(pxy)
             try:
                 if method == 'get':
-                    r = ss.get(url, timeout=5, **kwargs)
+                    r = ss.get(url, timeout=timeout, **kwargs)
                     if r.status_code == requests.codes.ok:
                         return r
                 if method == 'post':
-                    r = ss.post(url, timeout=5, **kwargs)
+                    r = ss.post(url, timeout=timeout, **kwargs)
                     if r.status_code == requests.codes.ok:
                         return r
             except:
-                pass
+                print('Warning: proxy `{}` does not work.'.format(pxy))
             finally:
                 ss.close()
         return

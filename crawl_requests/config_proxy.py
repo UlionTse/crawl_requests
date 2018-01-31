@@ -6,6 +6,7 @@ import random
 import math
 import requests
 from bs4 import BeautifulSoup
+from pprint import pprint as ppt
 
 
 class Gen_proxy:
@@ -135,10 +136,10 @@ class Gen_proxy:
             N += 1
             print('Tested [{0}%] -------- Wait [{1} minutes]'.format(math.trunc((N/len(pool))*100),
                   math.trunc(-1+(len(pool)*5-(time.time()-start))/60)))
-        print('\n[{0}] proxies will be loaded.'.format(len(final_proxy_pool)))
-        #print('\nFinal_proxy_pool: {}'.format(final_proxy_pool))
+        print('\n[{0}] proxies will be loaded.\n'.format(len(final_proxy_pool)))
+        ppt(final_proxy_pool)
         #print('--------------------test_time:{} seconds. Instantiation end.---------------------'.format(math.trunc(time.time()-start)))
-        print('\n-------------------------------- YOU CAN BEGIN TO USE PROXY --------------------------------\n')
+        print('\n---------------------- YOU CAN BEGIN TO USE PROXY ----------------------\n')
         return final_proxy_pool
 
 
