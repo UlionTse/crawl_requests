@@ -6,11 +6,11 @@
 
 *2. Usage:*
 -----------
->>>from crawl_requests import req_default
+>>> from crawl_requests import req_default
 
->>>req = req_default.Req()
+>>> req = req_default.Req()
 
->>>req.keep_req(method='get',url='https://www.python.org')
+>>> req.keep_req(method='get',url='https://www.python.org')
 
 <Response [200]>
 
