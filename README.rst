@@ -2,14 +2,13 @@
 ==================
 *1. Feactures:*
 ---------------
-- *crawl_requests(like requests) can update ua and proxy automatically.*
+- *crawl_requests(based requests) can update ua and proxy automatically.*
 
 *2. Usage:*
 -----------
 >>> from crawl_requests import req_default
 >>> req = req_default.Req()
 >>> req.keep_req(method='get',url='https://www.python.org')
-
 <Response [200]>
 
 *3. Tips:*
