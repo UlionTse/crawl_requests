@@ -1,6 +1,6 @@
 **crawl_requests**
 ==================
-*1. Feactures:*
+*1. Features:*
 ---------------
 - *crawl_requests(based requests) can update ua and proxy automatically.*
 
